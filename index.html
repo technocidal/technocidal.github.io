@@ -23,7 +23,7 @@
           `https://api.flickr.com/services/feeds/photos_public.gne?nsid=${flickrId}&format=json&nojsoncallback=1`
         );
         const text = await response.text();
-        const data = JSON.parse(text.replace(/^\/{2}jsonFlickrFeed\(/|\\)$/g, ''));
+        const data = JSON.parse(text.slice(15, -1));
         
         if (data.items && data.items.length > 0) {
           const latestPhoto = data.items[0];
